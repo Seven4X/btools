@@ -1,14 +1,21 @@
-# btools
 
-snowfake : id生成器
+# discuss-parse 文本中@ ## 链接内容到解析
+评论，社交场景不可避免
 
-tiny-url : 短链接
+# menu-tree-converter: 菜单数据的结构转换
+根据数据库存储的行结构转化成树结构
 
-menu-tree-converter: 菜单数结构工具
+# snowfake : id生成器
+这个不用多说了吧
 
-weather-api: 天气API
+# tiny-url : 短链接生成及解析
+短信内容包含链接，可以将长链接变短节省短信费用
 
-微信支付：
+# weather-api: 天气API
+产品经理一般都会系统某个地方嵌入一个天气显示
 
-登陆验证码：
+# wx-apy:  微信支付充值到自有系统余额
 
+微信充值到余额，业务从系统余额中扣费
+
+ 

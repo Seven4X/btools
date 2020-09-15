@@ -9,21 +9,21 @@ public class MenuConverter {
     /**
      * 将List数据结构转换为树结构
      * Convert java arrayList of Parent/child relation into tree
-     *
+     * 利用范型避免返回参数后调用者再进行强转操作
      * @param menuInfos
      * @return
      */
-    public List<MenuInfo> structureMenu(List<MenuInfo> menuInfos) {
-        Map<String, MenuInfo> map = new HashMap(menuInfos.size());
-        for (MenuInfo info : menuInfos) {
+    public static  <T extends MenuInfo> List<T> structureMenu(List<T> menuInfos) {
+        Map<String, T> map = new HashMap<>(menuInfos.size());
+        for (T info : menuInfos) {
             map.put(info.getId(), info);
         }
-        Map<String, MenuInfo> hm = new LinkedHashMap();
+        Map<String, T> hm = new LinkedHashMap<>();
 
-        for (MenuInfo p : menuInfos) {
+        for (T p : menuInfos) {
 
             //  ----- Child -----
-            MenuInfo mmdChild = null;
+            T mmdChild = null;
             if (hm.containsKey(p.getId())) {
                 mmdChild = hm.get(p.getId());
             } else {
@@ -35,7 +35,7 @@ public class MenuConverter {
 
 
             // ------ Parent ----
-            MenuInfo mmdParent;
+            T mmdParent;
             if (hm.containsKey(p.getParentId())) {
                 mmdParent = hm.get(p.getParentId());
             } else {
@@ -52,8 +52,8 @@ public class MenuConverter {
 
         }
         // Get the root
-        List<MenuInfo> DX = new ArrayList<MenuInfo>();
-        for (MenuInfo mmd : hm.values()) {
+        List<T> DX = new ArrayList<T>();
+        for (T mmd : hm.values()) {
             if (mmd != null && mmd.getParentId().equals(MenuInfo.getRootID())){
                 DX.add(mmd);
             }
